@@ -44,16 +44,6 @@ module.exports = {
     mongoose
       .connect(url, options)
       .then(async () => {
-        // Auto incrementation for id
-        // let newid = 0;
-        // Repository.findOne({}, {}, { sort: { _id: -1 } }, (err, rep) => {
-        //   if (rep) {
-        //     console.log(rep.name);
-        //     newid = rep.id + 1;
-        //     console.log(rep.id);
-        //     console.log(newid);
-        //   }
-        // });
         const {
           id = null,
           name = null,
