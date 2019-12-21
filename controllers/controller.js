@@ -41,6 +41,16 @@ module.exports = {
     mongoose
       .connect(url, options)
       .then(async () => {
+        // Auto incrementation for id
+        // let newid = 0;
+        // Repository.findOne({}, {}, { sort: { _id: -1 } }, (err, rep) => {
+        //   if (rep) {
+        //     console.log(rep.name);
+        //     newid = rep.id + 1;
+        //     console.log(rep.id);
+        //     console.log(newid);
+        //   }
+        // });
         const {
           id = null,
           name = null,
@@ -48,7 +58,6 @@ module.exports = {
           description = null,
           html_url = null
         } = req.body;
-        console.log(req.body);
         const repo = new Repository({ id, name, owner, description, html_url });
         const result = await repo.save();
 
@@ -81,17 +90,9 @@ module.exports = {
       .connect(url, options)
       .then(async () => {
         const { id = null } = req.params;
-        const {
-          name = null,
-          owner = null,
-          description = null,
-          html_url = null
-        } = req.body;
+        const body = req.body;
 
-        const result = await Repository.updateOne(
-          { id },
-          { name, owner, description, html_url }
-        );
+        const result = await Repository.updateOne({ id }, body);
 
         if (result) res.json(result);
         else res.status(404).send("not found");
