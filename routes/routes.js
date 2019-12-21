@@ -2,17 +2,17 @@ module.exports = app => {
   const ctrl = require("../controllers/controller.js");
 
   // Create a new Repository
-  app.post("/repositories", ctrl.createRepository);
+  app.post("/api/repositories", ctrl.createRepository);
 
   // Retrieve all Repositories
-  app.get("/repositories", ctrl.getAllRepositories);
+  app.get("/api/repositories", ctrl.getAllRepositories);
 
   // Retrieve a Repository with repoId
-  app.get("/repository/:id", ctrl.getRepository);
+  app.get("/api/repository/:id", ctrl.getRepository);
 
   // Update a Repository with repoId
-  app.put("/repository/:id", ctrl.updateRepository);
+  app.put("/api/repository/:id", ctrl.updateRepository);
 
   // Delete a Repository with repoId
-  app.delete("/repository/:id", ctrl.deleteRepository);
+  app.delete("/api/repository/:id", ctrl.deleteRepository);
 };
