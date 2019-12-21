@@ -70,8 +70,13 @@ module.exports = {
         console.log(Repository.count());
         const result = await Repository.deleteOne({ id });
 
-        if (result) res.json(result);
-        else res.status(404).send("not found");
+        if (result.deletedCount !== 0) {
+          res.json(result);
+        } else {
+          res
+            .status(404)
+            .send("The repo was not found with the id provided 😔");
+        }
       })
       .catch(err => {
         console.error("some error occurred", err);
