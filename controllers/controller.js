@@ -30,7 +30,10 @@ module.exports = {
         const result = await Repository.findOne({ id });
 
         if (result) res.json(result);
-        else res.status(404).send("not found");
+        else
+          res
+            .status(404)
+            .send("The repo was not found with the id provided 😔");
       })
       .catch(err => {
         console.error("some error occurred", err);
