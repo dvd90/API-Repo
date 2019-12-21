@@ -10,9 +10,9 @@ module.exports = app => {
   // Retrieve a Repository with repoId
   app.get("/repository/:id", ctrl.getRepository);
 
-  //     // Update a Repository with repoId
-  //     app.put('/notes/:noteId', notes.update);
+  // Update a Repository with repoId
+  app.put("/repository/:id", ctrl.updateRepository);
 
-  //     // Delete a Repository with repoId
-  //     app.delete('/notes/:noteId', notes.delete);
+  // Delete a Repository with repoId
+  app.delete("/repository/:id", ctrl.deleteRepository);
 };

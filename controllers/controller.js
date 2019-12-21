@@ -26,7 +26,7 @@ module.exports = {
       .connect(url, options)
       .then(async () => {
         const { id = null } = req.params;
-        // Query goes here
+
         const result = await Repository.findOne({ id });
 
         if (result) res.json(result);
@@ -51,6 +51,47 @@ module.exports = {
         console.log(req.body);
         const repo = new Repository({ id, name, owner, description, html_url });
         const result = await repo.save();
+
+        if (result) res.json(result);
+        else res.status(404).send("not found");
+      })
+      .catch(err => {
+        console.error("some error occurred", err);
+        res.status(500).send(err.message);
+      });
+  },
+  deleteRepository(req, res, next) {
+    mongoose
+      .connect(url, options)
+      .then(async () => {
+        const { id = null } = req.params;
+        console.log(Repository.count());
+        const result = await Repository.deleteOne({ id });
+
+        if (result) res.json(result);
+        else res.status(404).send("not found");
+      })
+      .catch(err => {
+        console.error("some error occurred", err);
+        res.status(500).send(err.message);
+      });
+  },
+  updateRepository(req, res, next) {
+    mongoose
+      .connect(url, options)
+      .then(async () => {
+        const { id = null } = req.params;
+        const {
+          name = null,
+          owner = null,
+          description = null,
+          html_url = null
+        } = req.body;
+
+        const result = await Repository.updateOne(
+          { id },
+          { name, owner, description, html_url }
+        );
 
         if (result) res.json(result);
         else res.status(404).send("not found");
