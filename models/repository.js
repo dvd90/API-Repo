@@ -5,7 +5,7 @@ const schema = {
   name: { type: String, required: true },
   owner: { type: String, required: true },
   description: { type: String, required: false },
-  html_url: { type: String, required: true }
+  html_url: { type: String, required: true, unique: true }
 };
 
 const repository_schema = new mongoose.Schema(schema);
