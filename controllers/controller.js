@@ -18,7 +18,7 @@ module.exports = {
       })
       .catch(err => {
         console.error("some error occurred", err);
-        res.status(500).send(err.message);
+        return res.status(500).send(err.message);
       });
   },
   getRepository(req, res, next) {
@@ -37,7 +37,7 @@ module.exports = {
       })
       .catch(err => {
         console.error("some error occurred", err);
-        res.status(500).send(err.message);
+        return res.status(500).send(err.message);
       });
   },
   createRepository(req, res, next) {
@@ -59,7 +59,7 @@ module.exports = {
       })
       .catch(err => {
         console.error("some error occurred", err);
-        res.status(500).send(err.message);
+        return res.status(500).send(err.message);
       });
   },
   deleteRepository(req, res, next) {
@@ -80,7 +80,7 @@ module.exports = {
       })
       .catch(err => {
         console.error("some error occurred", err);
-        res.status(500).send(err.message);
+        return res.status(500).send(err.message);
       });
   },
   updateRepository(req, res, next) {
@@ -102,7 +102,7 @@ module.exports = {
       })
       .catch(err => {
         console.error("some error occurred", err);
-        res.status(500).send(err.message);
+        return res.status(500).send(err.message);
       });
   }
 };
