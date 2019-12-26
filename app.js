@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 // default route
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to the amazing RESTful API of github repos 🌈"
+    message:
+      "Welcome to the amazing RESTful API of github repos 🌈 done by David Sellam"
   });
 });
 
